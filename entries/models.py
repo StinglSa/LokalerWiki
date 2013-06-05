@@ -6,8 +6,8 @@ import datetime
 class Entry(models.Model):
     title = models.CharField(max_length=20)
     content = models.CharField(max_length=200)
-    location = models.CharField(max_length=30)
-    wikilink = models.CharField(max_length=30)
+    location = models.CharField(max_length=30, blank=True)
+    wikilink = models.CharField(max_length=30, blank=True)
     pub_date = models.DateTimeField('date published')
     
     def __unicode__(self):  # Python 3: def __str__(self):

@@ -12,7 +12,7 @@ import re
 
 
 def index(request):
-    latest_entrie_list = Entry.objects.order_by('pub_date')[:10]
+    latest_entrie_list = Entry.objects.order_by('pub_date')[:20]
     context = {'latest_entrie_list': latest_entrie_list}
 
     return render(request, 'entries/index.html', context)

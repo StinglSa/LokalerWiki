@@ -15,15 +15,29 @@
 
 <p>{{ entry.content }}</p>
 
-<p>
-  <a href="http://{{entry.wikilink}}">{{ entry.title }}</a> <br>
-</p>
-
-<p>{{entry.wikilink}}</p>
-<p>{{entry.location}}</p>
 
 
+<p>WikiID: {{entry.location}}</p>
 
+{% if entry.location %}
+
+    <p>{{entry.wikilink}}</p>
+    <p>
+  	<a href="http://{{entry.wikilink}}">{{ entry.title }}</a> <br>
+	</p>
+	
+{% else %}
+
+    <form method="post">{% csrf_token %}
+    {{ form }}
+    <input type="hidden" value="content" name="save" />
+    <button  class="btn btn-primary" type="submit" id="save_button_test">test</button>
+</form>
+    
+{% endif %}
+
+
+<!--
 <form method="post">{% csrf_token %}
     {{ form }}
     <input type="hidden" value="content" name="save" />
@@ -34,7 +48,7 @@
     {{ form }}
     <button  class="btn btn-primary" type="submit" id="json_button">Json</button>
 </form>
-
+-->
 
 {% endblock %}
 
