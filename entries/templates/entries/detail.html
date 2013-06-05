@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+
+<h1>{{ entry.title }}</h1>
+
+<p>{{ entry.content }}</p>
+
+<p>
+  <a href="http://{{entry.wikilink}}">{{ entry.title }}</a> <br>
+</p>
+
+<p>{{entry.wikilink}}</p>
+<p>{{entry.location}}</p>
+
+
+
+<form method="post">{% csrf_token %}
+    {{ form }}
+    <input type="hidden" value="content" name="save" />
+    <button  class="btn btn-primary" type="submit" id="save_button">Save</button>
+</form>
+
+<form method="get">{% csrf_token %}
+    {{ form }}
+    <button  class="btn btn-primary" type="submit" id="json_button">Json</button>
+</form>
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>
+

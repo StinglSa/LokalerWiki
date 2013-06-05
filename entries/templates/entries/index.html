@@ -1,0 +1,9 @@
+{% if latest_entrie_list %}
+    <ul>
+    {% for entry in latest_entrie_list %}
+        <li><a href="/entries/{{ entry.id }}/">{{ entry.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
