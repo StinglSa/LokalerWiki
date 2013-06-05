@@ -30,9 +30,10 @@ def entry(request, entry_id):
     
     entry = get_object_or_404(Entry, pk=entry_id)
     
+    
     if('save' in request.POST ):
         
-        print(request.POST)
+        
         
         title = urlify(entry.title)
         data = urllib2.urlopen('http://debian-wiki/wiki/api.php?format=json&action=query&titles='+ title +'%20&format=json')
@@ -75,27 +76,7 @@ def entry(request, entry_id):
         
             entry.wikilink= rootAdr + title
             entry.save()
-        
-    if(request.GET):
     
-        title = entry.title
-        title = urlify(title)
-       
-        data = urllib2.urlopen('http://debian-wiki/wiki/api.php?format=json&action=query&titles='+ title +'%20&format=json')
-        
-        #########WORKING#############
-        #creates a python dict
-        j = json.load(data)
-        
-        
-        for key in j['query']['pages']:                          
-        
-            entry.location = key
-            entry.save()
-        ###########END################
-        
-        
-      
     return render(request, 'entries/detail.html', {'entry':entry})
     
 
